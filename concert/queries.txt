@@ -1,0 +1,30 @@
+﻿CREATE DATABASE concertdb;
+USE concertdb;
+
+CREATE TABLE concert (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    location VARCHAR(100),
+    datetime DATETIME
+);
+
+INSERT INTO concert (title, description, location, datetime) VALUES
+('Heategevuskontsert', 'Tule ja naudi muusikat heategevuseks!', 'Tallinna Kontserdimaja', '2025-06-15 18:00:00');
+
+CREATE TABLE photos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    file_path VARCHAR(255) NOT NULL
+);
+
+INSERT INTO photos (file_path) VALUES
+('C:/Photos/photo1.jpg'),
+('C:/Photos/photo2.jpg');
+
+CREATE TABLE booking (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    concert_id INT,
+    ticket_count INT,
+    total_price DECIMAL(10,2),
+    FOREIGN KEY (concert_id) REFERENCES concert(id)
+);
