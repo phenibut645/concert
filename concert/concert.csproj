@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppData.cs" />
     <Compile Include="Forms\BookingForm.cs">
       <SubType>Form</SubType>
     </Compile>

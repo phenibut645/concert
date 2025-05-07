@@ -25,8 +25,7 @@ namespace concert.Forms
 
         private void LoadConcertDates()
         {
-            string connStr = "server=localhost;user=root;password=;database=concertdb;";
-            using( var conn = new MySqlConnection(connStr))
+            using( var conn = new MySqlConnection(AppData.ConnectionString))
             {
                 conn.Open();
                 string query = "SELECT id, datetime FROM concert";
@@ -61,9 +60,7 @@ namespace concert.Forms
                 int concertId = (int)selectedItem.Value;
                 int ticketCount = (int)numericUpDown1.Value;
                 decimal total = ticketCount * pricePerTicket;
-
-                string connStr = "server=localhost;user=root;password=;database=concertdb;";
-                using( var conn = new MySqlConnection(connStr))
+                using( var conn = new MySqlConnection(AppData.ConnectionString))
                 {
                     conn.Open();
                     string query = "INSERT INTO booking (concert_id, ticket_count, total_price) VALUES (@cid, @count, @price)";

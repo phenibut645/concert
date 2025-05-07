@@ -22,8 +22,7 @@ namespace concert.Forms
 
         private void LoadConcertInfo()
         {
-            string connStr = "server=localhost;user=root;password=;database=concertdb;";
-            using (var conn = new MySqlConnection(connStr))
+            using (var conn = new MySqlConnection(AppData.ConnectionString))
             {
                 conn.Open();
                 string query = "SELECT * FROM concert LIMIT 1";
